@@ -6,7 +6,7 @@ Requires ZeresPluginLibrary for the options menu to work
 To install:
 1. Have BetterDiscord installed and working. See https://betterdiscord.app/FAQ for help with this.
 2. Download the [SitelenPona.plugin.js](https://raw.githubusercontent.com/ReveredOxygen/sitelen_pona_command/main/SitelenPona.plugin.js) file
-3. Go into Discord's settings. Scroll down to find `Plugins` in BetterDiscord's section, then click on it.
+3. Go into Discord's settings. Scroll down to find "Plugins" in BetterDiscord's section, then click on it.
 4. Click where it says "Open Plugins Folder" at the top.
 5. It should open a file manager. Drag the plugin into it.
 6. Enjoy being able to send sitelen pona as your own account! Use /os to do it.
