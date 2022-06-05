@@ -100,13 +100,16 @@ function renderText(text, config) {
     canvas.height = fontHeight * (lines.length - 1) + line1Height + padding
 
     ctx.font = config.fontSize + 'px ' + config.font;
-    ctx.strokeStyle = config.borderColor
-    ctx.lineWidth = strokeWidth
-    ctx.lineJoin = 'round';
     ctx.fillStyle = config.textColor
 
-    for (let i = 0; i < lines.length; i++) {
-        ctx.strokeText(lines[i], strokeWidth, (fontHeight * i) + padding + line1Ascent)
+    if (config.borderWidth !== 0) {
+        ctx.strokeStyle = config.borderColor
+        ctx.lineWidth = strokeWidth
+        ctx.lineJoin = 'round';
+
+        for (let i = 0; i < lines.length; i++) {
+            ctx.strokeText(lines[i], strokeWidth, (fontHeight * i) + padding + line1Ascent)
+        }
     }
 
     for (let i = 0; i < lines.length; i++) {
@@ -163,16 +166,25 @@ module.exports = class SitelenPona {
 }
 
 function readSettings() {
-    function load(key) { return BdApi.loadData('SitelenPona', key) }
+    function load(key, fallback) {
+        let value = BdApi.loadData('SitelenPona', key)
+
+        if (value === null || value === undefined) {
+            return fallback
+        }
+        else {
+            return value
+        }
+    }
 
     return {
-        textColor: load('textColor') || '#ffffff',
-        fontSize: load('fontSize') || 72,
-        font: load('font') || '"linja sike 5"',
-        borderWidth: load('borderWidth') || 5,
-        borderColor: load('borderColor') || '#36393f',
-        commandName: load('commandName') || 'os',
-        newline: load('newline') || '|'
+        textColor: load('textColor', '#ffffff'),
+        fontSize: load('fontSize', 72),
+        font: load('font', '"linja sike 5"'),
+        borderWidth: load('borderWidth', 5),
+        borderColor: load('borderColor', '#36393f'),
+        commandName: load('commandName', 'os'),
+        newline: load('newline', '|'),
     }
 }
 
