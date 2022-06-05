@@ -34,14 +34,36 @@ function execCommand(options, props) {
     if (options[1]) { message = options[1].value }
 
     renderText(options[0].value, settings).toBlob((x) => {
-        let upload = BdApi.findModuleByProps('instantBatchUpload').upload
-        upload({
+        let { uploadFiles } = BdApi.findModuleByProps('instantBatchUpload')
+        uploadFiles({
             channelId: props.channel.id,
-            file: new File([x], 'a.png'),
-            hasSpoiler: false,
-            fileName: 'a.png',
+            uploads: [
+                {
+                    item: {
+                        file: new File([x], 'sitelen_pona.png'),
+                        platform: 1,
+                    },
+                    id: 'sitelen_pona_upload',
+                    classification: 'image',
+                    isImage: true,
+                    isVIdeo: false,
+                    filename: 'sitelen_pona.png',
+                    showLargeMessageDialog: false,
+                    spoiler: false,
+                    description: options[0].value,
+                }
+            ],
             draftType: 0,
-            message: { content: message }})
+            parsedMessage: {
+                content: message,
+                tts: false,
+                invalidEmojis: [],
+                validNonShortcutEmojis: [],
+            },
+            options: {
+                stickerIds: [],
+            },
+        })
     })
 }
 
