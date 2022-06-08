@@ -123,7 +123,7 @@ module.exports = class SitelenPona {
     start() {
         // from https://rauenzi.github.io/BDPluginLibrary/docs/tutorial-getting-started.html
         if (!global.ZeresPluginLibrary) {
-            BdApi.alert("Library Missing",`The library plugin needed for ${this.getName()} is missing.<br />You can use the plugin, but attempting to change any settings will result in a crash.<br /><br /> <a href="https://betterdiscord.net/ghdl?url=https://raw.githubusercontent.com/rauenzi/BDPluginLibrary/master/release/0PluginLibrary.plugin.js" target="_blank">Click here to download the library!</a>`);
+            BdApi.alert("Library Missing",`The library plugin needed for SitelenPona is missing.<br />You can use the plugin, but attempting to change any settings will result in a crash.<br /><br /> <a href="https://betterdiscord.net/ghdl?url=https://raw.githubusercontent.com/rauenzi/BDPluginLibrary/master/release/0PluginLibrary.plugin.js" target="_blank">Click here to download the library!</a>`);
         }
 
 
